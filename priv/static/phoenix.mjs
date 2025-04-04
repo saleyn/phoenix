@@ -1374,7 +1374,11 @@ var Socket = class {
           };
           this.conn = null;
         }
-        callback && callback();
+        try {
+          callback && callback();
+        } catch (error) {
+          console.log(`Error in websocket reconnect: ${error}`);
+        }
       });
     });
   }
